@@ -72,3 +72,8 @@ unlink("folder", recursive=TRUE)
 unlink("zipfile.zip")
 
 ```
+
+## TODO 
+
+Currently {transfer} works only for the files/folders located in the working directory.
+Still needs some path manipulation to be done.
