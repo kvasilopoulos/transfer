@@ -30,9 +30,7 @@ bundle_zip <- function(file) {
 }
 
 assert_valid_file <- function(x) {
-  exist <- file.exists(x)
-}
-
-assert_valid_url <- function(x) {
-  exist <- url.ex
+  if (!file.exists(x)) {
+    stop("file does not exist", call. = FALSE)
+  }
 }
