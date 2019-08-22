@@ -18,3 +18,5 @@ RoxygenNote: 6.1.1
 Suggests: 
     crayon,
     clipr
+URL: https://github.com/kvasilopoulos/transfer
+BugReports: https://github.com/kvasilopoulos/transfer/issues
