@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/kvasilopoulos/transfer?branch=master&svg=true)](https://ci.appveyor.com/project/kvasilopoulos/transfer)
 <!-- badges: end -->
 
-The goal of transfer is to ...
+The goal of {transfer} is to utilize the power of [transfer.sh](https://transfer.sh) through R. \code{transfer.sh} is a website and not a script, which helps users to share files from the command-line an efficient way. It won’t required any additional software to work except pre-installed application such as curl. 
 
-## Installation
+## Install
 
 You can install the development version from [GitHub](https://github.com/) with:
 
@@ -30,12 +30,45 @@ You can install the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("kvasilopoulos/transfer")
 ```
+
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r load}
 library(transfer)
+```
+
+## Create Files and Directories to use in my examples
+
+```{r create, echo=TRUE, message=FALSE, warning=FALSE}
+file.create("file.txt")
+dir.create("folder")
+file.create("zipfile.zip")
 
 ```
 
+## File
+
+```{r file}
+tf_upload("file.txt")
+```
+
+## Folder
+
+```{r folder}
+tf_upload("folder")
+```
+
+## Zip
+
+```{r zip}
+tf_upload("zipfile.zip")
+```
+
+```{r remove, include=FALSE}
+unlink("file.txt")
+unlink("folder", recursive=TRUE)
+unlink("zipfile.zip")
+
+```

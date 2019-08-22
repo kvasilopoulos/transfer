@@ -70,6 +70,7 @@ build_url <- function(file) {
   url
 }
 
+#' @export
 print.transfer_up <- function(x) {
   attributes(x) <- NULL
   cat(" --- Uploaded: transfer.sh --- \n")

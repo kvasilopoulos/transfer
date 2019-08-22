@@ -26,6 +26,7 @@ process_reponse_down <- function(.args, ...) {
   file
 }
 
+#' @export
 print.transfer_down <- function(x) {
   attributes(x) <- NULL
   cat(" --- Downloaded: transfer.sh --- \n")

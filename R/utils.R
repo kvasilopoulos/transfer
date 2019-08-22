@@ -23,6 +23,7 @@ alphanumeric_zip_id <- function(n) {
   paste0("file", let, num, let2, ".zip")
 }
 
+#' @importFrom zip zipr zip_list
 bundle_zip <- function(file) {
   temp <- alphanumeric_zip_id(1)
   zip::zipr(temp, file)
