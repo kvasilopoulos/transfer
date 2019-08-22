@@ -9,14 +9,16 @@ Authors@R:
            comment = c(ORCID = "0000-0002-9769-6395"))
 Description: What the package does (one paragraph).
 License: GPL-3
-Encoding: UTF-8
-LazyData: true
-Imports: 
-    processx,
-    zip
-RoxygenNote: 6.1.1
-Suggests: 
-    crayon,
-    clipr
 URL: https://github.com/kvasilopoulos/transfer
 BugReports: https://github.com/kvasilopoulos/transfer/issues
+Depends: 
+    R (>=3.3.0)
+Imports: 
+    processx (>= 3.4.1),
+    zip (>= 2.0.3)
+Suggests: 
+    clipr (>= 0.7.0),
+    crayon (>= 1.3.4)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
