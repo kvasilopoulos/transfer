@@ -2,9 +2,9 @@
 #'
 #' Using the link, download the file(s).
 #'
-#' @param url The url to from.
-#' @param name Whether to change the name of the download file into a user-specified n
-#' name.
+#' @param url The url to download from.
+#' @param name Whether to change the name of the download file into a
+#' user-specified name.
 #' @inheritParams tf_upload
 #' @export
 tf_download <- function(url = NULL, name = NULL, spinner = TRUE,  ...) {

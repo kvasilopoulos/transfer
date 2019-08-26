@@ -2,36 +2,50 @@
 #'
 #' Share files with a URL Upload up to 10 GB Files stored for 14 days
 #'
-#' @param file the file to be uploaded
-#' @param max_downloads number of max downloads
-#' @param max_days number of days that the link is gonna be live. Maximum to 14.
+#' @param filename File to be uploaded
+#' @param path Path to find the file (combined with filenamed)
+#' @param max_downloads Number of max downloads downloaded from the provided link.
+#' @param max_days Number of days that the link is going be live. Maximum to 14.
 #' @param spinner Whether to show a reassuring spinner while the process is running.
-#' @param ... further arguments paseed to \code{\link[processx]{run}}
+#' @param ... Further arguments paseed to \code{\link[processx]{run}}.
+#'
+#' @return a \code{transfer.sh} link.
 #'
 #' @export
 #' @examples
 #' \dontrun{
 #'
 #' # Upload current directory
-#' tf_upload(".")
+#' x <- tf_upload(".")
+#'
+#' # See the content send to \code{transfer.sh}
+#' tf_content(x)
+#'
+#' # Open the link in browser
+#' tf_browse(x)
+#'
+#' # Download
+#' tf_download(x)
 #' }
-tf_upload <- function(file,  path = NULL, max_downloads = NULL, max_days = NULL,
+tf_upload <- function(filename,  path = NULL, max_downloads = NULL, max_days = NULL,
                       spinner = TRUE, ...) {
-  request <- build_request_up(file, .path = path, .max_dl = max_downloads,
+  request <- build_request_up(filename, .path = path, .max_dl = max_downloads,
                               .max_days = max_days, ...)
   process_reponse_up(request, spinner = spinner, ...)
 }
 
 build_request_up <- function(.file, .path, .max_dl, .max_days, ...) {
-  assert_valid_file(wd_path(.file, .path)) # needs full path for file.info, thus wd_path
+
+  assert_valid_filename(wd_path(.file, .path)) # needs full path for file.info
   url_file <- build_url(.file, .path)
   path_file <- build_file(url_file)
   arg_max_dl <- build_max_dl(.max_dl)
   arg_max_days <- build_max_days(.max_days)
+
   req <- c(arg_max_dl, arg_max_days, "--upload-file", path_file, url_file)
   attr(req, "zip") <- attr(url_file, "need_zip")
   attr(req, "content") <- attr(url_file, "content")
-  attr(req, "path") <- path
+  attr(req, "path") <- .path
   req
 }
 

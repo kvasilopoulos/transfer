@@ -7,7 +7,7 @@
 tf_browse(url)
 }
 \arguments{
-\item{url}{The url to from.}
+\item{url}{The url to download from.}
 }
 \description{
 This function takes you to the url.

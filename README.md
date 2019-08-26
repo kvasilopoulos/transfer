@@ -52,7 +52,7 @@ file.create("zipfile.zip")
 ``` r
 tf_upload("file.txt")
 #>  --- Uploaded: transfer.sh --- 
-#> https://transfer.sh/vfuZ6/file.txt
+#> Could not save metadata
 ```
 
 ## Folder
@@ -60,18 +60,5 @@ tf_upload("file.txt")
 ``` r
 tf_upload("folder")
 #>  --- Uploaded: transfer.sh --- 
-#> https://transfer.sh/3hLim/filemh1738q.zip
+#> Could not save metadata
 ```
-
-## Zip
-
-``` r
-tf_upload("zipfile.zip")
-#>  --- Uploaded: transfer.sh --- 
-#> https://transfer.sh/164Pb6/zipfile.zip
-```
-
-## TODO
-
-Currently {transfer} works only for the files/folders located in the
-working directory. Still needs some path manipulation to be done.

@@ -60,11 +60,6 @@ tf_upload("file.txt")
 tf_upload("folder")
 ```
 
-## Zip
-
-```{r zip}
-tf_upload("zipfile.zip")
-```
 
 ```{r remove, include=FALSE}
 unlink("file.txt")
@@ -72,8 +67,3 @@ unlink("folder", recursive=TRUE)
 unlink("zipfile.zip")
 
 ```
-
-## TODO 
-
-Currently {transfer} works only for the files/folders located in the working directory.
-Still needs some path manipulation to be done.

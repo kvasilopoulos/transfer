@@ -1,5 +1,5 @@
 Package: transfer
-Title: Easy file sharing with <transfer.sh>
+Title: R client for easy file sharing with <transfer.sh>
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kostas",
@@ -7,7 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "k.vasilopoulo@gmail.com",
            comment = c(ORCID = "0000-0002-9769-6395"))
-Description: What the package does (one paragraph).
+Description: R client for uploading files to transfer.sh (https://transfer.sh/).
+    {transfer} send file (or files, in case of directory upload) to transfer.sh, 
+    and provides link to uploaded files, so it could be easily shared.
 License: GPL-3
 URL: https://github.com/kvasilopoulos/transfer
 BugReports: https://github.com/kvasilopoulos/transfer/issues

@@ -4,19 +4,24 @@
 \alias{tf_upload}
 \title{Upload a file to \code{transfer.sh}}
 \usage{
-tf_upload(file, max_downloads = NULL, max_days = NULL,
-  spinner = TRUE, ...)
+tf_upload(filename, path = NULL, max_downloads = NULL,
+  max_days = NULL, spinner = TRUE, ...)
 }
 \arguments{
-\item{file}{the file to be uploaded}
+\item{filename}{File to be uploaded}
 
-\item{max_downloads}{number of max downloads}
+\item{path}{Path to find the file (combined with filenamed)}
 
-\item{max_days}{number of days that the link is gonna be live. Maximum to 14.}
+\item{max_downloads}{Number of max downloads downloaded from the provided link.}
+
+\item{max_days}{Number of days that the link is going be live. Maximum to 14.}
 
 \item{spinner}{Whether to show a reassuring spinner while the process is running.}
 
-\item{...}{further arguments paseed to \code{\link[processx]{run}}}
+\item{...}{Further arguments paseed to \code{\link[processx]{run}}.}
+}
+\value{
+a \code{transfer.sh} link.
 }
 \description{
 Share files with a URL Upload up to 10 GB Files stored for 14 days
@@ -25,6 +30,15 @@ Share files with a URL Upload up to 10 GB Files stored for 14 days
 \dontrun{
 
 # Upload current directory
-tf_upload(".")
+x <- tf_upload(".")
+
+# See the content send to \\code{transfer.sh}
+tf_content(x)
+
+# Open the link in browser
+tf_browse(x)
+
+# Download
+tf_download(x)
 }
 }

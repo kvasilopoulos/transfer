@@ -7,14 +7,14 @@
 tf_download(url = NULL, name = NULL, spinner = TRUE, ...)
 }
 \arguments{
-\item{url}{The url to from.}
+\item{url}{The url to download from.}
 
-\item{name}{Whether to change the name of the download file into a user-specified n
-name.}
+\item{name}{Whether to change the name of the download file into a
+user-specified name.}
 
 \item{spinner}{Whether to show a reassuring spinner while the process is running.}
 
-\item{...}{further arguments paseed to \code{\link[processx]{run}}}
+\item{...}{Further arguments paseed to \code{\link[processx]{run}}.}
 }
 \description{
 Using the link, download the file(s).
