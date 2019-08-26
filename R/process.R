@@ -19,7 +19,7 @@ stop_for_error <- function(x) {
     }else if (out %in% error_500) {
       500
     }else{
-      520
+      return()
     }
   error_type <-
     if (error_code == 400) {
