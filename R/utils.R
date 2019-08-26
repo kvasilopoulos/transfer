@@ -2,6 +2,15 @@ has_pkg <- function(pkg) {
   pkg %in% loadedNamespaces()
 }
 
+wd_path <- function(url, wd) {
+  if (is.null(wd)) {
+    path <- url
+  }else{
+    path <- file.path(wd, url)
+  }
+  path
+}
+
 build_file <- function(url) {
   new_file <-  sub(".*/", "", url)
   paste0("./", new_file)
