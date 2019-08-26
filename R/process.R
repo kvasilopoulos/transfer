@@ -1,33 +1,36 @@
-#' Browse to `url`
-#'
-#' This function takes you to the url.
-#'
-#' @inheritParams tf_download
-#' @export
-tf_browse <- function(url) {
-  view_url(url)
-}
 
-view_url <- function(x, open = interactive()) {
-  if (open) {
-    utils::browseURL(x)
-  }
-  invisible(x)
-}
-
-#' Get the content
-#'
-#' This function accesses the content of the file.
-#'
-#' @param file Access the content of the local file that are connected with the link.
-#' @export
-tf_content <- function(file) {
-  attr(file, "content")
-}
 
 process_reponse <- function(x, ...) {
   process <- run("curl", args = x, ...)
+  stop_for_error(process)
   process$stdout
 }
 
-
+stop_for_error <- function(x) {
+  out <- gsub("\n", "", x$stdout)
+  error_500 <-
+    c("Could not encode metadata",  "Could not save metadata",
+      "Could not retrieve file", "Error occurred copying to output stream")
+  error_code <-
+    if (out == "Could not upload empty file") {
+      400
+    }else if (out == "File not found" ) {
+      404
+    }else if (out %in% error_500) {
+      500
+    }else{
+      520
+    }
+  error_type <-
+    if (error_code == 400) {
+      "400 Bad Request -"
+    } else if (error_code == 404) {
+      "404"
+    } else if (error_code == 500) {
+      "500 Internal Server Error"
+    } else if (erro_code == 520) {
+      "Unknown  Error"
+    }
+  error_msg <- paste(error_type, out, sep = " / ")
+  stop(error_msg, call. = FALSE)
+}
