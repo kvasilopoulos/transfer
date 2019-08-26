@@ -29,7 +29,7 @@ alphanumeric_zip_id <- function(n) {
   let <- do.call(paste0, replicate(2, sample(letters, n, TRUE), FALSE))
   num <- sprintf("%04d", sample(9999, n, TRUE))
   let2 <- sample(letters, n, TRUE)
-  paste0("file", let, num, let2, ".zip")
+  paste0("transfer", let, num, let2, ".zip")
 }
 
 #' @importFrom zip zipr zip_list
