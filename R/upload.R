@@ -15,23 +15,23 @@
 #' # Upload current directory
 #' tf_upload(".")
 #' }
-tf_upload <- function(file,  wd = NULL, max_downloads = NULL, max_days = NULL,
+tf_upload <- function(file,  path = NULL, max_downloads = NULL, max_days = NULL,
                       spinner = TRUE, ...) {
-  request <- build_request_up(file, .max_dl = max_downloads,
+  request <- build_request_up(file, .path = path, .max_dl = max_downloads,
                               .max_days = max_days, ...)
   process_reponse_up(request, spinner = spinner, ...)
 }
 
-build_request_up <- function(file, .max_dl, .max_days, ...) {
-  assert_valid_file(wd_path(file, wd)) # needs full path for file.info, thus wd_path
-  url_file <- build_url(file, wd)
+build_request_up <- function(.file, .path, .max_dl, .max_days, ...) {
+  assert_valid_file(wd_path(.file, .path)) # needs full path for file.info, thus wd_path
+  url_file <- build_url(.file, .path)
   path_file <- build_file(url_file)
   arg_max_dl <- build_max_dl(.max_dl)
   arg_max_days <- build_max_days(.max_days)
   req <- c(arg_max_dl, arg_max_days, "--upload-file", path_file, url_file)
   attr(req, "zip") <- attr(url_file, "need_zip")
   attr(req, "content") <- attr(url_file, "content")
-  attr(req, "path") <- wd
+  attr(req, "path") <- path
   req
 }
 

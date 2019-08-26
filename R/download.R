@@ -12,9 +12,9 @@ tf_download <- function(url = NULL, name = NULL, spinner = TRUE,  ...) {
   process_reponse_down(request, spinner = spinner, ...)
 }
 
-build_request_down <- function(url, name) {
-  file <- build_file(url)
-  c(url, "-o", name)
+build_request_down <- function(.url, .name) {
+  file <- build_file(.url)
+  c(url, "-o", .name)
 }
 
 process_reponse_down <- function(.args, ...) {
