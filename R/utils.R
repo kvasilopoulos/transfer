@@ -33,10 +33,14 @@ alphanumeric_zip_id <- function(n) {
 }
 
 #' @importFrom zip zipr zip_list
-bundle_zip <- function(file) {
+bundle_zip <- function(file, path) {
   temp <- alphanumeric_zip_id(1)
-  zip::zipr(temp, file)
-  temp
+  filepath <- wd_path(temp, path)
+  zip::zipr(filepath, wd_path(file, path))
+  list(
+    temp = temp,
+    filepath = filepath
+  )
 }
 
 assert_valid_filename <- function(x) {

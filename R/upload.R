@@ -27,12 +27,19 @@
 #' # Download
 #' tf_download(x)
 #' }
-tf_upload <- function(filename,  path = NULL, max_downloads = NULL, max_days = NULL,
-                      spinner = TRUE, ...) {
+tf_upload <- function(filename,  path = NULL, max_downloads = NULL,
+                      max_days = NULL, spinner = TRUE, ...) {
   request <- build_request_up(filename, .path = path, .max_dl = max_downloads,
                               .max_days = max_days, ...)
-  process_reponse_up(request, spinner = spinner, ...)
+  process_reponse_up(request, spinner = spinner, wd = path, ...)
 }
+#
+.file <- file <- filename <-  "folder"
+.path = path <- wd <- "inst/examples"
+.max_dl <- max_downloads <-  NULL
+.max_days  <- max_days <-  NULL
+# # TODO folder is bundles and returned to pwd that why it works with path
+# # problem originates from bundle_zip that creates in pwd
 
 build_request_up <- function(.file, .path, .max_dl, .max_days, ...) {
 
@@ -54,8 +61,10 @@ process_reponse_up <- function(.args, ...) {
   proc <- process_reponse(x = .args, ...)
   attributes(proc) <- attributes(.args)
   file <- .args[length(.args) - 1]
-  if (is_zip(file)) {
-    unlink(file)
+  path <- attr(.args, "path")
+  filepath <- file.path(path, file)
+  if (is_zip(filepath)) {
+    unlink(filepath)
   }
   class(proc) <- "transfer_up"
   proc
@@ -78,11 +87,13 @@ build_url <- function(file, wd) {
   url_remote <- "https://transfer.sh"
   need_zip <- length(file) > 1 || is_dir(wd_path(file, wd))  # needs full path for checks
   if (need_zip) {
-    file <- bundle_zip(wd_path(file, wd)) # creates zip in wd
+    zipfile <- bundle_zip(file, wd) # creates zip in wd
+    file <- zipfile$temp
   }
   url <- file.path(url_remote, file)
   attr(url, "need_zip") <- need_zip
-  attr(url, "content") <- if (need_zip) zip::zip_list(file)$filename else file
+  if (need_zip) attr(url, "absolute_url") <- zipfile$filepath
+  attr(url, "content") <- if (need_zip) zip::zip_list(zipfile$filepath)$filename else file
   url
 }
 

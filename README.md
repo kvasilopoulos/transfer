@@ -31,34 +31,30 @@ devtools::install_github("kvasilopoulos/transfer")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to use {transfer}:
 
 ``` r
 library(transfer)
 ```
 
-## Create Files and Directories to use in my examples
-
-``` r
-file.create("file.txt")
-#> [1] TRUE
-dir.create("folder")
-file.create("zipfile.zip")
-#> [1] TRUE
-```
+To upload either file or folder you can easily use the name of the file
+and the path where the file is located, if it is not in the working
+directory. In case of a folder or multiple files `tf_upload` will bundle
+all contents and zip it into a single file. Then it will upload the zip
+and delete the zip that was created locally.
 
 ## File
 
 ``` r
-tf_upload("file.txt")
+tf_upload("file.txt", path = "inst/examples")
 #>  --- Uploaded: transfer.sh --- 
-#> Could not save metadata
+#> https://transfer.sh/2NaO8/file.txt
 ```
 
 ## Folder
 
 ``` r
-tf_upload("folder")
+tf_upload("folder", path = "inst/examples")
 #>  --- Uploaded: transfer.sh --- 
-#> Could not save metadata
+#> https://transfer.sh/94xcf/transfersi7519w.zip
 ```
