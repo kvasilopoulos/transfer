@@ -4,8 +4,14 @@
 \alias{tf_upload}
 \title{Upload a file to \code{transfer.sh}}
 \usage{
-tf_upload(filename, path = NULL, max_downloads = NULL,
-  max_days = NULL, spinner = TRUE, ...)
+tf_upload(
+  filename,
+  path = NULL,
+  max_downloads = NULL,
+  max_days = NULL,
+  spinner = TRUE,
+  ...
+)
 }
 \arguments{
 \item{filename}{File to be uploaded}
@@ -32,7 +38,7 @@ Share files with a URL Upload up to 10 GB Files stored for 14 days
 # Upload current directory
 x <- tf_upload(".")
 
-# See the content send to \\code{transfer.sh}
+# See the content send to \code{transfer.sh}
 tf_content(x)
 
 # Open the link in browser

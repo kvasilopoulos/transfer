@@ -91,8 +91,7 @@ copy. Propagation includes copying, distribution (with or without modification),
 making available to the public, and in some countries other activities as well.
 
 To “convey” a work means any kind of propagation that enables other
-parties to make or receive copies. Mere interaction with a user through a computer
-network, with no transfer of a copy, is not conveying.
+parties to make or receive copies. Mere interaction with a user through a computer network, with no transfer of a copy, is not conveying.
 
 An interactive user interface displays “Appropriate Legal Notices” to the
 extent that it includes a convenient and prominently visible feature that **(1)**
@@ -573,7 +572,7 @@ Also add information on how to contact you by electronic and paper mail.
 If the program does terminal interaction, make it output a short notice like this
 when it starts in an interactive mode:
 
-    transfer Copyright (C) 2019 Kostas Vasilopoulos
+    transfersh Copyright (C) 2019 Kostas Vasilopoulos
     This program comes with ABSOLUTELY NO WARRANTY; for details type 'show w'.
     This is free software, and you are welcome to redistribute it
     under certain conditions; type 'show c' for details.

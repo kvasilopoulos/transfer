@@ -12,15 +12,15 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# transfer
+# transfersh
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![Travis build status](https://travis-ci.org/kvasilopoulos/transfer.svg?branch=master)](https://travis-ci.org/kvasilopoulos/transfer)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/kvasilopoulos/transfer?branch=master&svg=true)](https://ci.appveyor.com/project/kvasilopoulos/transfer)
+[![R build status](https://github.com/kvasilopoulos/transfersh/workflows/R-CMD-check/badge.svg)](https://github.com/kvasilopoulos/transfersh/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/transfersh)](https://CRAN.R-project.org/package=transfersh)
 <!-- badges: end -->
 
-The goal of {transfer} is to utilize the power of [transfer.sh](https://transfer.sh) through R. \code{transfer.sh} is a website and not a script, which helps users to share files from the command-line an efficient way. It won’t required any additional software to work except pre-installed application such as curl. 
+The goal of {transfersh} is to utilize the power of [transfer.sh](https://transfer.sh) through R. \code{transfer.sh} is a website and not a script, which helps users to share files from the command-line an efficient way. It won’t required any additional software to work except pre-installed application such as curl. 
 
 ## Install
 
@@ -33,17 +33,13 @@ devtools::install_github("kvasilopoulos/transfer")
 
 ## Example
 
-This is a basic example which shows you how to use {transfer}:
+This is a basic example which shows you how to use {transfersh}:
 
 ```{r load}
-library(transfer)
+library(transfersh)
 ```
 
-To upload either file or folder you can easily use the name of the file and the 
-path where the file is located, if it is not in the working directory. In case 
-of a folder or multiple files `tf_upload` will bundle all contents and zip it 
-into a single file. Then it will upload the zip and delete the zip that was created 
-locally.
+To upload a file you can easily use the name of the file and the path where the file is located, if it is not in the working directory. In case  of a folder or multiple files `tf_upload` will bundle all contents and zip it  into a single file. Then it will upload the zip and delete the zip that was created locally.
 
 ## File
 
